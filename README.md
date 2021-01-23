@@ -1,8 +1,6 @@
 # Ismo Soundboard v 1.0
 
-Tulevaisuuden päivityksiä:
-
--Eri äänenkorkeuksien toimiminen myös satunnaisten ja useiden äänien toistamisessa sekä äänten katkaisussa uuden alkaessa<br>
+Tulossa pian:
 -Seppo Soundboard
 
 
