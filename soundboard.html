@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ismo Soundboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Crete+Round" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Patua+One&family=Vidaloka" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="icon" href="logo.png">
+<style>
+
+
+body {
+    background-image: linear-gradient(#95b7ed,#ffffff);
+    -webkit-animation-delay: 0.1s;
+    -webkit-animation-name: fontfix;
+    -webkit-animation-duration: 0.1s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes fontfix {
+    from { opacity: 1; }
+    to   { opacity: 1; }
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #b1f1f1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+#header {
+  width: 100%;
+  height: auto;
+}
+
+#videotext {
+  font-family: 'Merriweather', sans-serif;
+  font-size: 18;
+  font-weight: bold;
+}
+.content {
+    width: 1440px;
+    max-width: 100%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    font-family: 'Acme';
+    font-size: 42px;
+}
+
+.btn-group {
+  width: 1440px;
+  max-width:100%;
+  height: 125px;
+  max-height: 125px;
+  font-size: 42px;
+  text-align: center;
+}
+
+#soundboard {
+   overflow-y: scroll;
+   max-height:1500px;
+}
+
+input[type=checkbox] {
+  transform: scale(2.8);
+  margin: 10px;
+}
+
+.sounds {
+  width:340px;
+  height: 150px;
+  position:static;
+  vertical-align: middle;
+  max-width:24%;
+  background-color: #b1d1bb;
+  background:linear-gradient(to bottom, #76dede 10%, #329c77 100%);
+  border: 2px solid black;
+  white-space: normal;
+  border-radius: 6px;
+  margin-bottom:2px;
+  text-align: center;
+  font-size: 42px;
+  overflow-wrap: break-word;
+}
+
+.soundschosen {
+  width:340px;
+  height: 150px;
+  position:static;
+  vertical-align: middle;
+  max-width:24%;
+  background-color: #69db75;
+  background:linear-gradient(to bottom, #69db75 5%, #54dea5 100%);
+  border: 3px solid black;
+  white-space: normal;
+  border-radius: 6px;
+  margin-bottom:2px;
+  text-align: center;
+  font-size: 42px;
+}
+
+.sounds2 {
+  width:270px;
+  height: 120px;
+  position: static;
+  vertical-align: middle;
+  max-width:24%;
+  background-color: #b1d1bb;
+  border: 2px solid black;
+  white-space: normal;
+  border-radius: 6px;
+  margin-bottom:2px;
+  font-size: 27px;
+  text-align: center;
+}
+
+
+#playerIframe {
+  width:640px;
+  height:360px;
+  max-width:100%;
+  max-height:100%;
+}
+
+#multiplay {
+  margin-bottom: 3px;
+  border-radius: 8px;
+  background-color: #906edb;
+
+}
+
+#info {
+  font-size: 28px;
+  background-color: #94dcf2;
+  padding-left: 12px;
+  padding-right: 12px;
+  border-radius: 5px;
+}
+
+#random {
+  margin-bottom: 3px;
+  border-radius: 8px;
+  background-color: #d689ff;
+}
+
+#copyright {
+  font-size: 20px;
+}
+
+#slidecontainer {
+  margin: 0 auto;
+  width: 40%;
+}
+
+.sliders {
+  -webkit-appearance: none;
+  height: 20px;
+  width: 500px;
+  background: #450045;
+  outline: none;
+  opacity: 0.9;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  align: center;
+  margin: 0 auto;
+  margin-top: 0px;
+  margin-bottom: 6px;
+  display: inline-block;
+
+}
+
+#pitch {
+  width: 600px;
+}
+
+#volume {
+  width: 600px;
+}
+
+#volumebox {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 15px;
+  margin-bottom: 4px;
+}
+
+#pitchbox {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 15px;
+  margin-bottom: 4px;
+}
+
+.sliders::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: #8ff6b5;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#output {
+  font-size: 28px;
+  display: inline-block;
+  margin-left: 12px;
+  margin-top:0px;
+}
+
+#fasg {
+  font-size: 28px;
+  display: inline-block;
+  margin-left: 12px;
+}
+
+#infotext {
+  font-size: 20px;
+  font-family: "verdana";
+  width: 50%;
+  max-width: 100%;
+  text-align: left;
+  margin: auto;
+}
+
+</style>
+</head>
+
+<body>
+     <div class="content">
+        <img id="header" src="banneri8.png" alt="Ismo Soundboard by PottuTheGod">
+           <div id="options">
+              <input type="checkbox" id="cbox"> Pysäytä ääni uuden alkaessa <input type="checkbox" id="cbox2"> Jatka edellistä ääntä siitä mihin pysähtyi <br>
+              <input type="checkbox" id="cbox3"> Valitse useita ääniä toistettaviksi peräkkäin <input type="button" id="multiplay" onclick="playMultiple()" value="Toista äänet">  <input type="button" id="random" onclick="playRandom()" value="Toista satunnainen ääni"><br>
+              <div id="volumebox">Äänenvoimakkuus: <input type="range" id="volume" class="sliders" min="0" max="100" value="50" step="2"><p id="fasg"></p></div>
+              <div id="pitchbox"> Äänenkorkeus:   <input type="range" class="sliders" min="-2" max="2" value="0" class="slider" id="pitch" step="0.1" oninput="getStretch()"><p id="output"></p></div>
+           </div>
+           <div id="soundboard">
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="30e" id="30eb">30 Euroo</button>
+             <button class="sounds" onclick="playAudio(this)" value="ahhh" id="ahhhb">AHHHH!</button>
+             <button class="sounds" onclick="playAudio(this)" value="aiminavai" id="aiminavaib">Ai minä vai</button>
+             <button class="sounds" onclick="playAudio(this)" value="aivankuten" id="aivankutenb">Aivan kuten haluatte ylhäisyys</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="anteeksrouva" id="anteeksrouvab">Anteeks rouva</button>
+             <button class="sounds" onclick="playAudio(this)" value="appelsiini" id="appelsiinib">Appelsiini</button>
+             <button class="sounds" onclick="playAudio(this)" value="arvaa" id="arvaab">Arvaa</button>
+             <button class="sounds" onclick="playAudio(this)" value="asiasillaselva" id="asiasillaselvab">Asiahan on sitten sillä selvä</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="bloah" id="bloahb">BLoahahahaol</button>
+             <button class="sounds" onclick="playAudio(this)" value="eduskuntaan" id="eduskuntaanb">Eduskuntaan</button>
+             <button class="sounds" onclick="playAudio(this)" value="eiainakaan" id="eiainakaanb">Ei ainakaan tää</button>
+             <button class="sounds" onclick="playAudio(this)" value="ei" id="eib">Ei</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="eiiii" id="eiiiib">EIIII!</button>
+             <button class="sounds" onclick="playAudio(this)" value="eikaniitapesty" id="eikaniitapestyb">Eikä niitä pesty ikinä</button>
+             <button class="sounds" onclick="playAudio(this)" value="enikina" id="enikinab">En ikinä</button>
+             <button class="sounds" onclick="playAudio(this)" value="entieda" id="entiedab">En tiedä</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="enkaanna" id="enkaannab">Enkä anna</button>
+             <button class="sounds" onclick="playAudio(this)" value="hahahahaha" id="hahahahahab">Hahahahaha</button>
+             <button class="sounds" onclick="playAudio(this)" value="haluutsaturpaas" id="haluutsaturpaasb">Haluutsä turpaas</button>
+             <button class="sounds" onclick="playAudio(this)" value="halvemmakstulis" id="halvemmakstulisb">Halvemmaks tulis heittää</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="hanhi" id="hanhib">Hanhi</button>
+             <button class="sounds" onclick="playAudio(this)" value="hei" id="heib">Hei</button>
+             <button class="sounds" onclick="playAudio(this)" value="heikulta" id="heikultab">Hei kulta</button>
+             <button class="sounds" onclick="playAudio(this)" value="heiottaaksverta" id="heiottaaksvertab">Hei ottaaks joku VERTA</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="helvetinverenimijat" id="helvetinverenimijatb">Helvetin verenimijät</button>
+             <button class="sounds" onclick="playAudio(this)" value="herkkua" id="herkkuab">Herkkua</button>
+             <button class="sounds" onclick="playAudio(this)" value="homoja" id="homojab">Homoja</button>
+             <button class="sounds" onclick="playAudio(this)" value="hoponpopon" id="hoponpoponb">Höpönpöpönpöppö</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="ihmislihaa" id="ihmislihaab">Ihmislihaa</button>
+             <button class="sounds" onclick="playAudio(this)" value="ihhahhaa" id="ihhahhaab">Ihhahhaa</button>
+             <button class="sounds" onclick="playAudio(this)" value="ismolaitela" id="ismolaitelab">Ismo Laitela</button>
+             <button class="sounds" onclick="playAudio(this)" value="isoaidin" id="isoaidinb">Isoäidin</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="janytturpakii" id="janytturpakiib">Ja nyt turpa kiinni</button>
+             <button class="sounds" onclick="playAudio(this)" value="javielapesapallo" id="javielapesapallob">Ja vielä pesäpallomailalla</button>
+             <button class="sounds" onclick="playAudio(this)" value="jepjep" id="jepjepb">Jep jep</button>
+             <button class="sounds" onclick="playAudio(this)" value="joo" id="joob">Joo-o</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="jukkapalmu" id="jukkapalmub">Jukkapalmu</button>
+             <button class="sounds" onclick="playAudio(this)" value="junaneteen" id="junaneteenb">Junan eteen</button>
+             <button class="sounds" onclick="playAudio(this)" value="juoppojanarkkareita" id="juoppojanarkkareitab">Juoppoja ja narkkareita</button>
+             <button class="sounds" onclick="playAudio(this)" value="jaateloa" id="jaateloab">Jäätelöä</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="kaakeleita" id="kaakeleitab">Kaakeleita</button>
+             <button class="sounds" onclick="playAudio(this)" value="kristopaivinen" id="kristopaivinenb">Kristo Päivinen</button>
+             <button class="sounds" onclick="playAudio(this)" value="kultasaiskospusun" id="kultasaiskospusunb">Kulta saiskos pusun</button>
+             <button class="sounds" onclick="playAudio(this)" value="kuussa" id="kuussab">Kuussa</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="kylootmelkonensonni" id="kylootmelkonensonnib">Kyl sä oot melkonen sonni</button>
+             <button class="sounds" onclick="playAudio(this)" value="kyllaon" id="kyllaonb">Kyllä on</button>
+             <button class="sounds" onclick="playAudio(this)" value="karpanen" id="karpanenb">Kärpänen</button>
+             <button class="sounds" onclick="playAudio(this)" value="laitetaakaikkipunaselle" id="laitetaakaikkipunaselleb">Laitetaan kaikki punaselle</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="lataalataa" id="lataalataab">Lataa lataa</button>
+             <button class="sounds" onclick="playAudio(this)" value="luumukiisselia" id="luumukiisseliab">Luumukiisseliä</button>
+             <button class="sounds" onclick="playAudio(this)" value="meenaimisiin" id="meenaimisiinb">Mee vaikka homon kans naimisiin</button>
+             <button class="sounds" onclick="playAudio(this)" value="menijo" id="menijob">Meni jo</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="missa" id="missab">Missä</button>
+             <button class="sounds" onclick="playAudio(this)" value="mitahelvettia" id="mitahelvettiab">Mitä helvettiä</button>
+             <button class="sounds" onclick="playAudio(this)" value="mitastoitarkotti" id="mitastoitarkottib">Mitäs toi tarkotti</button>
+             <button class="sounds" onclick="playAudio(this)" value="mitaah" id="mitaahb">Mitääh</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="mullonvelkoja" id="mullonvelkojab">Mullon velkoja</button>
+             <button class="sounds" onclick="playAudio(this)" value="mutku" id="mutkub">Mutku</button>
+             <button class="sounds" onclick="playAudio(this)" value="maarvasinsen" id="maarvasinsenb">Mä arvasin sen</button>
+             <button class="sounds" onclick="playAudio(this)" value="makerronpoliisille" id="makerronpoliisilleb">Mä kerron asiasta poliisille</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="maoonniksiismo" id="maoonniksiismob">Mä oon Niksi-Ismo</button>
+             <button class="sounds" onclick="playAudio(this)" value="morkoja" id="morkojab">Mörköjä</button>
+             <button class="sounds" onclick="playAudio(this)" value="naiset" id="naisetb">Naiset</button>
+             <button class="sounds" onclick="playAudio(this)" value="niivarmaajoo" id="niivarmaajoob">Nii varmaa joo</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="niiin" id="niiinb">Nii-i</button>
+             <button class="sounds" onclick="playAudio(this)" value="niksiismoneuvonantaja" id="niksiismoneuvonantajab">Niksi-Ismo, koko kansan..</button>
+             <button class="sounds" onclick="playAudio(this)" value="noen" id="noenb">No en</button>
+             <button class="sounds" onclick="playAudio(this)" value="noniinii" id="noniiniib">No nii nii</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="nytulostaalta" id="nytulostaaltab">Nyt ulos täältä</button>
+             <button class="sounds" onclick="playAudio(this)" value="oijoijoiuh" id="oijoijoiuhb">Oijoijoihuh</button>
+             <button class="sounds" onclick="playAudio(this)" value="perunamuusia" id="perunamuusiab">Perunamuusia</button>
+             <button class="sounds" onclick="playAudio(this)" value="petihommat" id="petihommatb">Petihommat pelittää</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="pupupoksyyn" id="pupupoksyynb">Pupu pöksyyn</button>
+             <button class="sounds" onclick="playAudio(this)" value="rotatjatorakat" id="rotatjatorakatb">Rotat ja torakat</button>
+             <button class="sounds" onclick="playAudio(this)" value="rahmakapala" id="rahmakapalab">Rähmäkäpälä</button>
+             <button class="sounds" onclick="playAudio(this)" value="seksiseppo" id="seksiseppob">Seksi-seppo</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="sepettimua" id="sepettimuab">Se petti mua</button>
+             <button class="sounds" onclick="playAudio(this)" value="seppppo" id="seppppob">Seppo</button>
+             <button class="sounds" onclick="playAudio(this)" value="sepuukottimua" id="sepuukottimuab">Se puukotti mua</button>
+             <button class="sounds" onclick="playAudio(this)" value="siis209" id="siis209b">Siis 209</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="siisomaankotiini" id="siisomaankotiinib">Siis omaan kotiini</button>
+             <button class="sounds" onclick="playAudio(this)" value="sillaltaalas" id="sillaltaalasb">Sillalta alas</button>
+             <button class="sounds" onclick="playAudio(this)" value="sinnemeni" id="sinnemenib">Sinne meni</button>
+             <button class="sounds" onclick="playAudio(this)" value="sinnemeniosteri" id="sinnemeniosterib">Sinne meni osteri-Ossi</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="sinaturpakiinni" id="sinaturpakiinnib">Sinä turpa kiinni nyt</button>
+             <button class="sounds" onclick="playAudio(this)" value="tadaa" id="tadaab">Tadaa</button>
+             <button class="sounds" onclick="playAudio(this)" value="taikavarvulla" id="taikavarvullab">Taikavarvulla</button>
+             <button class="sounds" onclick="playAudio(this)" value="takahuoneeseen" id="takahuoneeseenb">Takahuoneeseen</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="takalistoon" id="takalistoonb">Takalistoon</button>
+             <button class="sounds" onclick="playAudio(this)" value="taneli" id="tanelib">Taneli</button>
+             <button class="sounds" onclick="playAudio(this)" value="tappomelkei" id="tappomelkeib">Tappo melkei</button>
+             <button class="sounds" onclick="playAudio(this)" value="tekopyhapaska" id="tekopyhapaskab">Tekopyhä paska</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="terveheipahei" id="terveheipaheib">Terve ja heipä hei</button>
+             <button class="sounds" onclick="playAudio(this)" value="tietaakseni" id="tietaaksenib">Tietääkseni</button>
+             <button class="sounds" onclick="playAudio(this)" value="tsajajaja" id="tsajajajab">Tsajajajaja</button>
+             <button class="sounds" onclick="playAudio(this)" value="tti" id="ttib">TTI!</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="tuoksuukotaalla" id="tuoksuukotaallab">Tuoksuuko täällä kahvi</button>
+             <button class="sounds" onclick="playAudio(this)" value="turvekylpy" id="turvekylpyb">Turvekylpy</button>
+             <button class="sounds" onclick="playAudio(this)" value="vanhakunnon" id="vanhakunnonb">Vanha kunnon akku loppu</button>
+             <button class="sounds" onclick="playAudio(this)" value="vittu" id="vittub">Vittu</button>
+           </div>
+           <div>
+             <button class="sounds" onclick="playAudio(this)" value="voihelvetti" id="voihelvettib">Voi helveTTI!</button>
+             <button class="sounds" onclick="playAudio(this)" value="vahaproot" id="vahaprootb">Vähä prööt prööt</button>
+             <button class="sounds" onclick="playAudio(this)" value="ahh" id="ahhb">Ähh</button>
+             <button class="sounds" onclick="playAudio(this)" value="anngh" id="annghb">Äänngh</button>
+           </div>
+         </div>
+         <div>
+           <p hidden id="test"></p>
+           <audio id="30e" src="30 Euroo.wav" ></audio>
+           <audio id="ahhh" src="AHHH.wav" ></audio>
+           <audio id="aijoosinne" src="Ismo - Ai joo sinne joo.wav" ></audio>
+           <audio id="aiminavai" src="ai minä vai.wav" ></audio>
+           <audio id="aivankuten" src="Aivan kuten haluatte ylhäisyys.wav" ></audio>
+           <audio id="anteeksrouva" src="anteeks rouva.wav" ></audio>
+           <audio id="appelsiini" src="appelsiini.wav" ></audio>
+           <audio id="arvaa" src="arvaa.wav" ></audio>
+           <audio id="asiasillaselva" src="Asiahan on sitten sillä selvä.wav" ></audio>
+           <audio id="bloah" src="BLoahahahaol.wav" ></audio>
+           <audio id="eduskuntaan" src="eduskuntaan.wav" ></audio>
+           <audio id="ei" src="Ei.wav" ></audio>
+           <audio id="eiiii" src="EIIII.wav" ></audio>
+           <audio id="eiainakaan" src="Ei ainakaan taa.wav" ></audio>
+           <audio id="eiehdi" src="Ismo - Ei ehdi!.wav" ></audio>
+           <audio id="eikaniitapesty" src="Eika niita pesty ikina.wav" ></audio>
+           <audio id="entieda" src="En tiedä.wav" ></audio>
+           <audio id="enikina" src="enikinä.wav" ></audio>
+           <audio id="enkaanna" src="Enkä anna.wav" ></audio>
+           <audio id="hahahahaha" src="hahahahaha.wav" ></audio>
+           <audio id="haluutsaturpaas" src="haluutsaturpaas.wav" ></audio>
+           <audio id="halvemmakstulis" src="halvemmaks tulis heittää.wav" ></audio>
+           <audio id="hanhi" src="hanhi.wav" ></audio>
+           <audio id="heikulta" src="Hei kulta.wav" ></audio>
+           <audio id="heiottaaksverta" src="hei ottaaks joku VERTA.wav" ></audio>
+           <audio id="hei" src="hei.wav" ></audio>
+           <audio id="heiheihei" src="heiheihei.wav" ></audio>
+           <audio id="helvetinverenimijat" src="helvetin verenimijät.wav" ></audio>
+           <audio id="herkkua" src="herkkua.wav" ></audio>
+           <audio id="homoja" src="homoja.wav" ></audio>
+           <audio id="hoponpopon" src="höpönpöpön.wav" ></audio>
+           <audio id="ihmislihaa" src="IHMISLIHAAAAAA.wav" ></audio>
+           <audio id="ihhahhaa" src="ihhahhaa.wav" ></audio>
+           <audio id="ismolaitela" src="ismo laitela.wav" ></audio>
+           <audio id="isoaidin" src="isoäidin.wav" ></audio>
+           <audio id="janytturpakii" src="ja nyt turpa kiinni.wav" ></audio>
+           <audio id="javielapesapallo" src="javielapesapallomailal.wav" ></audio>
+           <audio id="jepjep" src="jep jep.wav" ></audio>
+           <audio id="joo" src="joo-o.wav" ></audio>
+           <audio id="jukkapalmu" src="jukkapalmu.wav" ></audio>
+           <audio id="junaneteen" src="junan eteen.wav" ></audio>
+           <audio id="juoppojanarkkareita" src="juoppoja ja narkkareita.wav" ></audio>
+           <audio id="jaateloa" src="jäätelöä.wav" ></audio>
+           <audio id="kaakeleita" src="kaakeleita.wav" ></audio>
+           <audio id="kristopaivinen" src="kristo päivinen.wav" ></audio>
+           <audio id="kultasaiskospusun" src="kulta saisko pusun.wav" ></audio>
+           <audio id="kuussa" src="kuussa.wav" ></audio>
+           <audio id="kylootmelkonensonni" src="kyllsäootmelkonensonni.wav" ></audio>
+           <audio id="kyllaon" src="kyllä on.wav" ></audio>
+           <audio id="karpanen" src="kärpänen.wav" ></audio>
+           <audio id="laitetaakaikkipunaselle" src="laitetaakaikkipunaselle.wav" ></audio>
+           <audio id="lataalataa" src="lataalataa.wav" ></audio>
+           <audio id="luumukiisselia" src="luumukiisselia.wav" ></audio>
+           <audio id="meenaimisiin" src="meenaimisiin.wav" ></audio>
+           <audio id="menijo" src="Meni jo.wav" ></audio>
+           <audio id="missa" src="missä.wav" ></audio>
+           <audio id="mitahelvettia" src="mitähelvettiä.wav" ></audio>
+           <audio id="mitastoitarkotti" src="Mitäs toi tarkotti.wav" ></audio>
+           <audio id="mitasualiikuttaa" src="mitä se sua liikuttaa.wav"></audio>
+           <audio id="mitaah" src="mitääh.wav" ></audio>
+           <audio id="mullonvelkoja" src="mullon velkoja.wav" ></audio>
+           <audio id="mutku" src="mutkumutku.wav" ></audio>
+           <audio id="maarvasinsen" src="mä arvasin sen.wav" ></audio>
+           <audio id="makerronpoliisille" src="mäkerronasiastapoliisille.wav" ></audio>
+           <audio id="maoonniksiismo" src="Ismo - Mä oon Niksi-Ismo ja tänään mä näytän teille kuinka puhjenneesta sisäkumista paikallistetaan reikä.wav" ></audio>
+           <audio id="morkoja" src="MÖRKOJÄ.wav" ></audio>
+           <audio id="naiset" src="Naiset.wav" ></audio>
+           <audio id="niivarmaajoo" src="nii varmaa joo.wav" ></audio>
+           <audio id="niiin" src="niiin.wav" ></audio>
+           <audio id="niksiismoneuvonantaja" src="Ismo - Niksi-Ismo, koko kansan neuvon antaja.wav" ></audio>
+           <audio id="noniinii" src="no nii nii.wav" ></audio>
+           <audio id="noen" src="noen.wav" ></audio>
+           <audio id="nytulostaalta" src="nytulostäältä.wav" ></audio>
+           <audio id="oijoijoiuh" src="oijoijoiuh.wav" ></audio>
+           <audio id="perunamuusia" src="perunamuusia.wav" ></audio>
+           <audio id="petihommat" src="petihommat pelittaa.wav" ></audio>
+           <audio id="pupupoksyyn" src="pupupoksyyyn.wav" ></audio>
+           <audio id="rahmakapala" src="rahmakapala.wav" ></audio>
+           <audio id="rotatjatorakat" src="Rotat ja torakat.wav" ></audio>
+           <audio id="seolivahinko" src="Se oli vahinko.wav" ></audio>
+           <audio id="sepettimua" src="se petti mua.wav" ></audio>
+           <audio id="seksiseppo" src="seksiseppo.wav" ></audio>
+           <audio id="seppppo" src="seppppo.wav" ></audio>
+           <audio id="sepuukottimua" src="sepuukottimua.wav" ></audio>
+           <audio id="siis209" src="Siis 209.wav" ></audio>
+           <audio id="siisomaankotiini" src="siisomaankotiini.wav" ></audio>
+           <audio id="sillaltaalas" src="sillalta alas.wav" ></audio>
+           <audio id="sinnemeniosteri" src="sinne meni osteri-ossi, joka naisen lossi.wav" ></audio>
+           <audio id="sinnemeni" src="sinnemeni.wav" ></audio>
+           <audio id="sinaturpakiinni" src="sinä turpa kiinni nyt.wav" ></audio>
+           <audio id="tadaa" src="tadaa.wav" ></audio>
+           <audio id="taikavarvulla" src="Taikavarvulla.wav" ></audio>
+           <audio id="takahuoneeseen" src="takahuoneeseen.wav" ></audio>
+           <audio id="takalistoon" src="takalistoon.wav" ></audio>
+           <audio id="taneli" src="taneli.wav" ></audio>
+           <audio id="tappomelkei" src="tappomelkei.wav" ></audio>
+           <audio id="tekopyhapaska" src="Tekopyhapaska.wav" ></audio>
+           <audio id="terveheipahei" src="Ismo - Terve ja heipähei.wav" ></audio>
+           <audio id="tietaakseni" src="tietääkseni.wav" ></audio>
+           <audio id="tsajajaja" src="tsajajaja.wav" ></audio>
+           <audio id="tti" src="tti.wav" ></audio>
+           <audio id="tuoksuukotaalla" src="Tuoksuuko taalla kahvi.wav" ></audio>
+           <audio id="turvekylpy" src="turvekylpy.wav" ></audio>
+           <audio id="vanhakunnon" src="Vanha kunnon akku loppu.wav" ></audio>
+           <audio id="vittu" src="vittu.wav" ></audio>
+           <audio id="vahaproot" src="vähäpröötprööt.wav" ></audio>
+           <audio id="ahh" src="ähh.wav" ></audio>
+           <audio id="anngh" src="äännghh.wav" ></audio>
+           <audio id="voihelvetti" src="voi helvetti.wav" ></audio>
+  </div>
+  <p id="copyright">Äänet omistaa FremantleMedia Finland Oy.</p><input type="button" id="info" onclick="showInfo()" value="Info">
+  <p id="infotext"><b>Versio 1.0</b><br><br>Toistaiseksi äänen katkaiseminen ja jatkaminen siitä mihin jäätiin toimivat vain
+    Normaalin Laitelan äänenkorkeudella (1.00). Samaten satunnaisen äänen toistaminen sekä useamman äänen valitseminen toistaa äänet normaaleina.<br><br>
+    <b>Tulossa pian:</b><br>
+    - Seppo soundboard
+    <br><br>
+    Sivun suunnittelu ja toteutus: <span id="pottu"><b>Terho Loikkanen</b></span><br>
+    Yläbanneri: <b>Juha Kuusisto</b><br>
+    Äänet: <b>Esko Kovero</b>
+  </p>
+</div>
+
+<script>
+
+
+var playlist = [];
+
+function scaleSliders() {
+  var volumebox = document.getElementById("volumebox");
+  var pitchbox = document.getElementById("pitchbox");
+  var fasg = document.getElementById("fasg");
+  if (window.innerWidth > 1253) {
+    $("#fasg").show();
+    volumebox.style.marginRight = "15px";
+    pitchbox.style.marginLeft = "15px";
+  } else if (window.innerWidth > 1223 && window.innerWidth <= 1253) {
+    $("#fasg").show();
+    volumebox.style.marginRight = "0px";
+    pitchbox.style.marginLeft = "0px";
+  } else {
+    volumebox.style.marginRight = "0px";
+    pitchbox.style.marginLeft = "0px";
+    $("#fasg").hide();
+  }
+}
+
+$(document).ready(function () {
+  scaleSliders();
+  $("#infotext").hide();
+  document.getElementById("cbox2").disabled = true;
+});
+
+$(window).resize(function () {
+  scaleSliders();
+});
+
+$("#pottu").click(function() {
+   var hey = document.getElementById("mitasualiikuttaa");
+   hey.volume = getVolume();
+   hey.play();
+});
+
+$("#cbox").click(function() {
+  var checkBox = document.getElementById("cbox");
+  var checkBox2 = document.getElementById("cbox2");
+  if (checkBox.checked) {
+    checkBox2.disabled = false;
+  } else {
+    checkBox2.disabled = true;
+  }
+})
+
+function showInfo() {
+  if($("#infotext").is(":visible")) {
+    $("#infotext").hide();
+  } else {
+    $("#infotext").show();
+    document.getElementById('infotext').scrollIntoView();
+  }
+
+}
+
+
+function toggleSlider() {
+  var checkBox = document.getElementById("cbox4");
+  var sliderarea = document.getElementById("slidecontainer");
+  if (checkBox.checked) {
+    sliderarea.style.display = "block";
+  } else {
+    sliderarea.style.display = "none";
+  }
+}
+
+
+function updateButtons() {
+  for (var i = 0; i < playlist.length; i++) {
+    id = playlist[i] + "b";
+    document.getElementById(id).innerHTML = document.getElementById(id).innerHTML.substring(3);
+    document.getElementById(id).innerHTML = String(i + 1) + ". " + document.getElementById(id).innerHTML;
+  }
+}
+
+function playAudio(id) {
+  var checkBox = document.getElementById("cbox3");
+  idString = String(id.value);
+  buttonId = idString + "b";
+  activeButton = document.getElementById(buttonId);
+  var audio = document.getElementById(idString);
+  audio.volume = getVolume();
+  if (checkBox.checked == false) {
+    pause();
+    document.getElementById("test").innerHTML = idString;
+    if (document.getElementById("pitch").value == 0) {
+      audio.play();
+    } else {
+      stretch = getStretch();
+      timeStretch(audio,stretch);
+    }
+
+  } else {
+    if (activeButton.className == 'sounds') {
+      playlist.push(idString);
+      activeButton.classList.remove('sounds');
+      activeButton.classList.add('soundschosen');
+    } else {
+      activeButton.classList.remove('soundschosen');
+      activeButton.classList.add('sounds');
+      playlist.splice(playlist.indexOf(idString), 1);
+    }
+
+  }
+
+}
+
+
+function pause() {
+  var currPlaying = document.getElementById("test").innerHTML;
+  var currentAudio = document.getElementById(currPlaying);
+  var checkBox = document.getElementById("cbox");
+  var checkBox2 = document.getElementById("cbox2");
+  if (checkBox.checked == true && !!currPlaying) {
+     currentAudio.pause();
+     if (checkBox2.checked == false) {
+        currentAudio.currentTime = 0;
+     }
+  }
+}
+
+function setDelay(prevLen, audio) {
+  setTimeout(function(){
+    audio.play();
+  }, prevLen + 100);
+}
+
+function playMultiple() {
+   var prevLen = 0;
+   for (var i = 0; i < playlist.length; i++) {
+     var audio = document.getElementById(playlist[i]);
+     audio.volume = getVolume();
+     if (i == 0) {
+       audio.play();
+     } else {
+       var prev = document.getElementById(playlist[i-1]);
+       prevLen += prev.duration * 1000;
+       setDelay(prevLen, audio);
+     }
+   }
+}
+
+// jos kaikki äänet ois vaan arrayssä ni ois helpompi mutta fuck ever
+function playRandom() {
+  var board = document.getElementById("soundboard");
+  var buttoncount = board.children.length * 4;
+  buttonIndex = Math.floor((Math.random() * (buttoncount-1)));
+  rowIndex = Math.floor(buttonIndex / 4);
+  rowStartIndex = rowIndex * 4;
+  var rows = Array.prototype.slice.call( document.getElementById('soundboard').children );
+  var chosenRow = rows[rowIndex];
+  var rowChildren = Array.prototype.slice.call(chosenRow.children );
+  var chosenButton = rowChildren[buttonIndex-rowStartIndex];
+  var audio = document.getElementById(chosenButton.value);
+  audio.volume = getVolume();
+  audio.play();
+}
+
+function getStretch() {
+  var pitch = document.getElementById("pitch");
+  var output = document.getElementById("output");
+  var fasg = document.getElementById("fasg");
+  let power = pitch.value;
+  var result = Math.pow(2, power);
+  result = result.toFixed(2);
+  var desc = [" (Syvyyksien mega valas Ismo :D)", " (Demoni Ipi >:D)", " (Ismo Stöö käy hitaalla)", " (Kalle :D)", " (Piri toimii xD)", " (Pikkuorava Ismo TsAIAIAjiAIJAI)", " (Pikkuorava Ismo TsAIAIAjiAIJAI)"];
+  var resultToInd = result < 1.00 ? Math.floor(result*4 - 1) : Math.floor(parseFloat(result) + 2.5);
+  var end = desc[resultToInd];
+  if (result == 1) {
+    end = " (Normaali Laitela)";
+  }
+  //console.log(parseInt(result)+2.25, resultToInd, desc[resultToInd]);
+  output.innerHTML = result + end;
+  fasg.style.marginTop = "39px";
+
+  return result;
+}
+
+function timeStretch(a, factor) {
+  // ottaa slaiderista nopeutus/hidastus kertoimen
+   var player = new Audio;
+   player.volume = getVolume();
+   player.src = a.src;
+   player.preservesPitch = false;
+   player.mozPreservesPitch = false;
+   player.playbackRate = factor;
+   player.play();
+}
+
+function getVolume() {
+   var volume = document.getElementById("volume").value / 100.0;
+   return volume;
+}
+
+
+
+
+</script>
+</body>
+</html>
