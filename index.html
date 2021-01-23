@@ -51,8 +51,8 @@ body {
   font-weight: bold;
 }
 .content {
-    width: 1440px;
-    max-width: 100%;
+    max-width: 1440px;
+    width: 100%;
     margin: auto;
     text-align: center;
     position: relative;
@@ -61,8 +61,8 @@ body {
 }
 
 .btn-group {
-  width: 1440px;
-  max-width:100%;
+  max-width: 1440px;
+  width:100%;
   height: 125px;
   max-height: 125px;
   font-size: 42px;
@@ -719,6 +719,7 @@ function timeStretch(a, factor) {
    player.volume = getVolume();
    player.src = a.src;
    player.preservesPitch = false;
+   player.webkitPreservesPitch = false;
    player.mozPreservesPitch = false;
    player.playbackRate = factor;
    player.play();
