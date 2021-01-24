@@ -51,21 +51,21 @@ body {
   font-weight: bold;
 }
 .content {
-    max-width: 1440px;
-    width: 100vw;
+    max-width: calc((100vw - 1920px) / 4 + 1440px);
+    width: 98vw;
     margin: auto;
     text-align: center;
     position: relative;
     font-family: 'Acme';
-    font-size: 42px;
+    font-size: calc(16px + (100vw - 400px)/50);
 }
 
 .btn-group {
-  max-width: 1440px;
-  width:100vw;
+  max-width: 75%;
+  width:96vw;
   height: 125px;
-  max-height: 125px;
-  font-size: 42px;
+  max-height: 12%;
+  font-size: calc(16px + (100vw - 400px)/50);
   text-align: center;
 }
 
@@ -75,13 +75,15 @@ body {
 }
 
 input[type=checkbox] {
-  transform: scale(2.8);
-  margin: 10px;
+
+  margin: 1vw;
 }
 
 .sounds {
-  width:340px;
-  height: 150px;
+  width: 23vw;
+  max-width: calc(340px + (100vw - 1920px) / 16);
+  height: calc(17vw - (100vw - 300px) / 100);
+  max-height: calc(120px + 1.5vw);
   position:static;
   vertical-align: middle;
   max-width:24%;
@@ -92,13 +94,15 @@ input[type=checkbox] {
   border-radius: 6px;
   margin-bottom:2px;
   text-align: center;
-  font-size: 42px;
+  font-size:  calc(26px + (90vw - 900px) / 50 - (100vw / 300));
   overflow-wrap: break-word;
 }
 
 .soundschosen {
-  width:340px;
-  height: 150px;
+  width: 23vw;
+  max-width: calc(340px + (100vw - 1920px) / 16);
+  height: calc(17vw - (100vw - 300px) / 100);
+  max-height: calc(120px + 1.5vw);
   position:static;
   vertical-align: middle;
   max-width:24%;
@@ -109,7 +113,8 @@ input[type=checkbox] {
   border-radius: 6px;
   margin-bottom:2px;
   text-align: center;
-  font-size: 42px;
+  font-size: calc(26px + (90vw - 900px) / 50 - (100vw / 300));
+  overflow-wrap: break-word;
 }
 
 .sounds2 {
@@ -143,7 +148,7 @@ input[type=checkbox] {
 }
 
 #info {
-  font-size: 28px;
+  font-size: calc(12px + (100vw - 400px)/50);
   background-color: #94dcf2;
   padding-left: 12px;
   padding-right: 12px;
@@ -157,7 +162,7 @@ input[type=checkbox] {
 }
 
 #copyright {
-  font-size: 20px;
+  font-size: calc(12px + (100vw - 600px)/80);
 }
 
 #slidecontainer {
@@ -167,7 +172,7 @@ input[type=checkbox] {
 
 .sliders {
   -webkit-appearance: none;
-  height: 20px;
+  height: calc(12px + (100vw - 500px)/150);
   width: 500px;
   background: #450045;
   outline: none;
@@ -183,25 +188,29 @@ input[type=checkbox] {
 }
 
 #pitch {
-  width: 600px;
+  width: 45vw;
+  max-width: 600px;
 }
 
 #volume {
-  width: 600px;
+  width: 45vw;
+  max-width: 600px;
 }
 
 #volumebox {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 15px;
+  margin-right: 0vw;
   margin-bottom: 4px;
+  margin-left: 0vw;
 }
 
 #pitchbox {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 15px;
+  margin-left: 0vw;
   margin-bottom: 4px;
+  margin-right:0vw;
 }
 
 .sliders::-webkit-slider-thumb {
@@ -215,25 +224,29 @@ input[type=checkbox] {
 }
 
 #output {
-  font-size: 28px;
+  font-size: calc(14px + (100vw - 500px)/80);
   display: inline-block;
-  margin-left: 12px;
+  margin-left: calc(25vw + 200px);
   margin-top:0px;
 }
 
 #fasg {
-  font-size: 28px;
+  font-size: calc(16px + (100vw - 600px)/80);
   display: inline-block;
   margin-left: 12px;
 }
 
 #infotext {
-  font-size: 20px;
+  font-size: calc(12px + (100vw - 400px)/150);
   font-family: "verdana";
   width: 50%;
   max-width: 100%;
   text-align: left;
   margin: auto;
+}
+
+#options {
+  margin: 0 auto;
 }
 
 </style>
@@ -243,10 +256,11 @@ input[type=checkbox] {
      <div class="content">
         <img id="header" src="banneri8.png" alt="Ismo Soundboard by PottuTheGod">
            <div id="options">
-              <input type="checkbox" id="cbox"> Pysäytä ääni uuden alkaessa <input type="checkbox" id="cbox2"> Jatka edellistä ääntä siitä mihin pysähtyi <br>
+
               <input type="checkbox" id="cbox3"> Valitse useita ääniä toistettaviksi peräkkäin <input type="button" id="multiplay" onclick="playMultiple()" value="Toista äänet">  <input type="button" id="random" onclick="playRandom()" value="Toista satunnainen ääni"><br>
-              <div id="volumebox">Äänenvoimakkuus: <input type="range" id="volume" class="sliders" min="0" max="100" value="50" step="2"><p id="fasg"></p></div>
-              <div id="pitchbox"> Äänenkorkeus:   <input type="range" class="sliders" min="-2" max="2" value="0" class="slider" id="pitch" step="0.1" oninput="getStretch()"><p id="output"></p></div>
+              <div id="volumebox">Äänenvoimakkuus: <input type="range" id="volume" class="sliders" min="0" max="100" value="50" step="2"></div>
+              <div id="pitchbox"> Äänenkorkeus:   <input type="range" class="sliders" min="-2" max="2" value="0" class="slider" id="pitch" step="0.1" oninput="getStretch()"></div>
+              <p id="output"></p>
            </div>
            <div id="soundboard">
            <div>
@@ -406,8 +420,8 @@ input[type=checkbox] {
              <button class="sounds" onclick="playAudio(this)" value="anngh" id="annghb">Äänngh</button>
            </div>
          </div>
-         <div>
-           <p hidden id="test"></p>
+         <p hidden id="test"></p>
+         <div id="sounds">
            <audio id="30e" src="30 Euroo.wav" ></audio>
            <audio id="ahhh" src="AHHH.wav" ></audio>
            <audio id="aijoosinne" src="Ismo - Ai joo sinne joo.wav" ></audio>
@@ -519,8 +533,7 @@ input[type=checkbox] {
            <audio id="voihelvetti" src="voi helvetti.wav" ></audio>
   </div>
   <p id="copyright">Äänet omistaa FremantleMedia Finland Oy.</p><input type="button" id="info" onclick="showInfo()" value="Info">
-  <p id="infotext"><b>Versio 1.0</b><br><br>Toistaiseksi äänen katkaiseminen ja jatkaminen siitä mihin jäätiin toimivat vain
-    Normaalin Laitelan äänenkorkeudella (1.00). Samaten satunnaisen äänen toistaminen sekä useamman äänen valitseminen toistaa äänet normaaleina.<br><br>
+  <p id="infotext"><b>Versio 1.0</b><br><br>
     <b>Tulossa pian:</b><br>
     - Seppo soundboard
     <br><br>
@@ -534,30 +547,67 @@ input[type=checkbox] {
 
 
 var playlist = [];
+var currentlyPlaying = "";
+var player = new Audio;
 
 function scaleSliders() {
   var volumebox = document.getElementById("volumebox");
   var pitchbox = document.getElementById("pitchbox");
-  var fasg = document.getElementById("fasg");
-  if (window.innerWidth > 1253) {
-    $("#fasg").show();
-    volumebox.style.marginRight = "15px";
-    pitchbox.style.marginLeft = "15px";
-  } else if (window.innerWidth > 1223 && window.innerWidth <= 1253) {
-    $("#fasg").show();
-    volumebox.style.marginRight = "0px";
-    pitchbox.style.marginLeft = "0px";
-  } else {
-    volumebox.style.marginRight = "0px";
-    pitchbox.style.marginLeft = "0px";
-    $("#fasg").hide();
+  var volume = document.getElementById("volume");
+  var pitch = document.getElementById("pitch");
+  var output = document.getElementById("output");
+  //console.log(window.innerWidth);
+  var boxScale = Math.max((window.innerWidth / 750), 1.1);
+  //console.log(boxScale);
+  var checkboxes = $("input:checkbox");
+  for (var i = 0; i<checkboxes.length; i++) {
+    //console.log(checkboxes[i]);
+    checkboxes[i].style.transform = "scale("+boxScale+")";
+  }
+  if (window.innerWidth < 600) {
+    //$("#fasg").show();
+    volume.style.width = "75vw";
+    pitch.style.width = "75vw";
+    volume.style.marginRight = "10vw";
+    pitch.style.marginLeft = "10vw";
+    volume.style.marginLeft = "10vw";
+    pitch.style.marginRight = "10vw";
+    volumebox.style.marginLeft = "0vw";
+    pitchbox.style.marginRight = "0vw";
+    volumebox.style.marginRight = "0vw";
+    pitchbox.style.marginLeft = "0vw";
+  //  volume.style.margin = "0 auto";
+  //  pitch.style.margin = "0 auto";
+    volumebox.style.display = "block";
+    pitchbox.style.display = "block";
+    output.style.marginLeft = "0px";
+    output.style.margin = "0 auto";
+  }  else {
+    volume.style.width = "47vw";
+    pitch.style.width = "47vw";
+    volume.style.marginRight = "0vw";
+    pitch.style.marginLeft = "0vw";
+    volume.style.marginLeft = "0vw";
+    pitch.style.marginRight = "0vw";
+    volumebox.style.marginRight = "2vw";
+  //  pitchbox.style.marginLeft = "1vw";
+    volumebox.style.display = "inline-block";
+    pitchbox.style.display = "inline-block";
+    output.style.marginLeft = "calc(25vw + 200px)";
+    output.style.margin = "none";
+    //$("#fasg").hide();
   }
 }
 
 $(document).ready(function () {
   scaleSliders();
+  var sounds = Array.prototype.slice.call( document.getElementById('sounds').children );
+  for (var i = 0; i < sounds.length; i++) {
+  //  console.log(sounds[i]);
+    sounds[i].setAttribute("preload", "auto");
+  }
   $("#infotext").hide();
-  document.getElementById("cbox2").disabled = true;
+//  document.getElementById("cbox2").disabled = true;
 });
 
 $(window).resize(function () {
@@ -570,15 +620,17 @@ $("#pottu").click(function() {
    hey.play();
 });
 
-$("#cbox").click(function() {
+/*$("#cbox").click(function() {
   var checkBox = document.getElementById("cbox");
   var checkBox2 = document.getElementById("cbox2");
+  console.log(currentlyPlaying, player.currentTime);
   if (checkBox.checked) {
     checkBox2.disabled = false;
   } else {
     checkBox2.disabled = true;
   }
-})
+});
+*/
 
 function showInfo() {
   if($("#infotext").is(":visible")) {
@@ -610,24 +662,29 @@ function updateButtons() {
   }
 }
 
+
 function playAudio(id) {
   var checkBox = document.getElementById("cbox3");
   idString = String(id.value);
   buttonId = idString + "b";
   activeButton = document.getElementById(buttonId);
   var audio = document.getElementById(idString);
-  audio.volume = getVolume();
+  currentlyPlaying = audio;
+  player.volume = getVolume();
+  player.src = audio.src;
+  if (audio.hasAttribute("currentTime")) {
+  //  console.log(audio.getAttribute("currentTime"));
+    player.currentTime = audio.getAttribute("currentTime");
+  }
+  //audio.volume = getVolume();
   if (checkBox.checked == false) {
     pause();
     document.getElementById("test").innerHTML = idString;
-    if (document.getElementById("pitch").value == 0) {
-      audio.play();
-    } else {
-      stretch = getStretch();
-      timeStretch(audio,stretch);
+    stretch = getStretch();
+    timeStretch(audio,stretch);
     }
 
-  } else {
+   else {
     if (activeButton.className == 'sounds') {
       playlist.push(idString);
       activeButton.classList.remove('sounds');
@@ -644,21 +701,24 @@ function playAudio(id) {
 
 
 function pause() {
-  var currPlaying = document.getElementById("test").innerHTML;
-  var currentAudio = document.getElementById(currPlaying);
-  var checkBox = document.getElementById("cbox");
-  var checkBox2 = document.getElementById("cbox2");
-  if (checkBox.checked == true && !!currPlaying) {
-     currentAudio.pause();
-     if (checkBox2.checked == false) {
-        currentAudio.currentTime = 0;
+  var currentAudio = document.getElementById("test");
+  var currPlaying = currentAudio.innerHTML;
+//  var checkBox = document.getElementById("cbox");
+//  var checkBox2 = document.getElementById("cbox2");
+//  currentlyPlaying.setAttribute("currentTime", player.currentTime);
+//  console.log(currentAudio, player.currentTime);
+  if (!!currPlaying) {
+     player.pause();
+    /* if (checkBox2.checked == false) {
+        currentlyPlaying.currentTime = 0;
      }
+     */
   }
 }
 
 function setDelay(prevLen, audio) {
   setTimeout(function(){
-    audio.play();
+    timeStretch(audio,getStretch());
   }, prevLen + 100);
 }
 
@@ -666,12 +726,12 @@ function playMultiple() {
    var prevLen = 0;
    for (var i = 0; i < playlist.length; i++) {
      var audio = document.getElementById(playlist[i]);
-     audio.volume = getVolume();
      if (i == 0) {
-       audio.play();
+       timeStretch(audio,getStretch());
+       //audio.play();
      } else {
        var prev = document.getElementById(playlist[i-1]);
-       prevLen += prev.duration * 1000;
+       prevLen += prev.duration * 1000 * (1/getStretch());
        setDelay(prevLen, audio);
      }
    }
@@ -689,14 +749,14 @@ function playRandom() {
   var rowChildren = Array.prototype.slice.call(chosenRow.children );
   var chosenButton = rowChildren[buttonIndex-rowStartIndex];
   var audio = document.getElementById(chosenButton.value);
-  audio.volume = getVolume();
-  audio.play();
+  //audio.volume = getVolume();
+  //audio.play();
+  timeStretch(audio,getStretch());
 }
 
 function getStretch() {
   var pitch = document.getElementById("pitch");
   var output = document.getElementById("output");
-  var fasg = document.getElementById("fasg");
   let power = pitch.value;
   var result = Math.pow(2, power);
   result = result.toFixed(2);
@@ -708,14 +768,13 @@ function getStretch() {
   }
   //console.log(parseInt(result)+2.25, resultToInd, desc[resultToInd]);
   output.innerHTML = result + end;
-  fasg.style.marginTop = "39px";
 
   return result;
 }
 
 function timeStretch(a, factor) {
   // ottaa slaiderista nopeutus/hidastus kertoimen
-   var player = new Audio;
+   //var player = new Audio;
    player.volume = getVolume();
    player.src = a.src;
    player.preservesPitch = false;
@@ -730,7 +789,9 @@ function getVolume() {
    return volume;
 }
 
-
+/* korjaa:
+<input type="checkbox" id="cbox"> Pysäytä ääni uuden alkaessa <input type="checkbox" id="cbox2"> Jatka edellistä ääntä siitä mihin pysähtyi <br>
+*/
 
 
 </script>
